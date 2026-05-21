@@ -1,0 +1,26 @@
+-- Total Revenue
+SELECT 
+ROUND(SUM(total_price),2) AS total_revenue
+FROM pizza_sales;
+
+-- Total Orders
+SELECT 
+COUNT(DISTINCT order_id) AS total_orders
+FROM pizza_sales;
+
+-- Most Popular Pizza Size
+SELECT 
+pizza_size,
+SUM(quantity) AS total_sold
+FROM pizza_sales
+GROUP BY pizza_size
+ORDER BY total_sold DESC;
+
+-- Top 10 Pizza
+SELECT 
+pizza_name,
+SUM(quantity) AS total_sold
+FROM pizza_sales
+GROUP BY pizza_name
+ORDER BY total_sold DESC
+LIMIT 10;
